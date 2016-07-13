@@ -116,6 +116,102 @@ Random d100
         end
         output "Your Dexterity is " + dex + ". And your Dex Modifier is " + dexMod + "."
 
+        A = a:RandomIntegerBetween (1, 6)
+        B = b:RandomIntegerBetween (1, 6)
+        C = c:RandomIntegerBetween (1, 6)
+        D = d:RandomIntegerBetween (1, 6)
+        boolean conStat = false
+       
+        output "You rolled " + A +" A, "+ B +" B, "+ C +" C, "+ D +" D, "+ " for your Constitution."
+        
+        repeat until conStat = true
+            text constitution = input ("Chose 3 for your Con Score (chose a, b, c, or d, seperated by commas, no repeats)")
+            constitution = constitution:ToUpperCase()
+            if constitution = "A,B,C" or constitution = "A, B, C"
+                con = A + B + C
+                conStat = true
+            elseif constitution = "A,B,D" or constitution = "A, B, D"
+                con = A + B + D
+                conStat = true
+            elseif constitution = "B,C,D" or constitution = "B, C, D"
+                con = B + C + D
+                conStat = true
+            elseif constitution = "A,C,D" or constitution = "A, C, D"
+                con = A + D + C
+                conStat = true
+            else
+                output "You have entered an error, please try again"
+                conStat = false
+            end
+        end
+         
+        
+        integer conMod = 0
+        if con > 10
+            conMod = (con-10)/2
+        elseif con = 9
+            conMod = -1
+        elseif con = 7
+            conMod = -2
+        elseif con = 5
+            conMod = -3
+        elseif con = 3
+            conMod = -4
+        elseif con < 10
+            conMod = -(10-con)/2
+        else con = 10
+            conMod = 0
+        end
+        output "Your Constitution is " + con + ". And your Con Modifier is " + conMod + "."
+
+        A = a:RandomIntegerBetween (1, 6)
+        B = b:RandomIntegerBetween (1, 6)
+        C = c:RandomIntegerBetween (1, 6)
+        D = d:RandomIntegerBetween (1, 6)
+        boolean intStat = false
+       
+        output "You rolled " + A +" A, "+ B +" B, "+ C +" C, "+ D +" D, "+ " for your Intelligence."
+        
+        repeat until intStat = true
+            text intelligence = input ("Chose 3 for your Int Score (chose a, b, c, or d, seperated by commas, no repeats)")
+            intelligence = intelligence:ToUpperCase()
+            if intelligence = "A,B,C" or intelligence = "A, B, C"
+                int = A + B + C
+                intStat = true
+            elseif intelligence = "A,B,D" or intelligence = "A, B, D"
+                int = A + B + D
+                intStat = true
+            elseif intelligence = "B,C,D" or intelligence = "B, C, D"
+                int = B + C + D
+                intStat = true
+            elseif intelligence = "A,C,D" or intelligence = "A, C, D"
+                int = A + D + C
+                intStat = true
+            else
+                output "You have entered an error, please try again"
+                intstat = false
+            end
+        end
+         
+        
+        integer intMod = 0
+        if int > 10
+            intMod = (int-10)/2
+        elseif int = 9
+            intMod = -1
+        elseif int = 7
+            intMod = -2
+        elseif int = 5
+            intMod = -3
+        elseif int = 3
+            intMod = -4
+        elseif int < 10
+            intMod = -(10-int)/2
+        else int = 10
+            intMod = 0
+        end
+        output "Your Intelligence is " + int + ". And your Int Modifier is " + intMod + "."
+
         integer armorClass = 0
         text armorStyle = input("Please choose your armor style. light, medium, or heavy")
         output "You have choosen " + armorStyle + " armor."
@@ -139,15 +235,17 @@ Random d100
             armorClass = 11 + dexMod
         elseif armor = "leather"            
             armorClass = 11 + dexMod
-        elseif armor = "studded Leather"            
+        elseif armor = "studded leather"            
             armorClass = 12 + dexMod
         elseif armor = "hide"
             armorClass = 12 + dexMod
-        elseif armor = "scale male"
+        elseif armor = "chain shirt"
             armorClass = 13 + dexMod
+        elseif armor = "scale male"
+            armorClass = 14 + dexMod
         elseif armor = "breastplate"
             armorClass = 14 + dexMod
-        elseif armor = "half Plate"
+        elseif armor = "half plate"
             armorClass = 15 + dexMod
         elseif armor = "ring mail"
             armorClass = 14
@@ -158,7 +256,6 @@ Random d100
         elseif armor = "plate"
             armorClass = 18
         end
-
 
         text shield = input ("Do you want a shield?")
         shield = shield:ToLowerCase()
