@@ -1,4 +1,3 @@
-use Libraries.Compute.Math
 use Libraries.Compute.Random
 Random d4
 Random d6
@@ -7,69 +6,3 @@ Random d10
 Random d12
 Random d20
 Random d100
-
-Math rounding
-
-
-
-        Random a
-        Random b
-        Random c
-        Random d
-        Random e
-        Random f
-        
-        //stats str, dex, con, int, wis, cha      
-        integer str = 0
-        integer dex = 0
-        integer con = 0
-        integer int = 0
-        integer wis = 0
-        integer cha = 0
-        
-        integer A = a:RandomIntegerBetween (1, 6)
-        integer B = b:RandomIntegerBetween (1, 6)
-        integer C = c:RandomIntegerBetween (1, 6)
-        integer D = d:RandomIntegerBetween (1, 6)
-        boolean strengthStat = false
-       
-        output "You rolled " + A +" A, "+ B +" B, "+ C +" C, "+ D +" D, "+ " for your Strength."
-        
-        repeat until strengthStat = true
-            text strength = input ("Chose 3 for your Strength Score (chose a, b, c, or d, seperated by commas, no repeats)")
-            if strength = "a,b,c" or strength = "A,B,C" or strength = "a, b, c" or strength = "A, B, C"
-                str = A + B + C
-                strengthStat = true
-            elseif strength = "a,b,d" or strength = "A,B,D" or strength = "a, b, d" or strength = "A, B, D"
-                str = A + B + D
-                strengthStat = true
-            elseif strength = "b,c,d" or strength = "B,C,D" or strength = "b, c, d" or strength = "B, C, D"
-                str = B + C + D
-                strengthStat = true
-            elseif strength = "a,c,d" or strength = "A,C,D" or strength = "a, c, d" or strength = "A, C, D"
-                str = A + D + C
-                strengthStat = true
-            else
-                output "You have entered an error, please try again"
-                strengthStat = false
-            end
-        end
-         
-        
-        integer strMod = 0
-        if str > 10
-            strMod = (str-10)/2
-        elseif str = 9
-            strMod = -1
-        elseif str = 7
-            strMod = -2
-        elseif str = 5
-            strMod = -3
-        elseif str = 3
-            strMod = -4
-        elseif str < 10
-            strMod = -(10-str)/2
-        else str = 10
-            strMod = 0
-        end
-        output "Your strength is " + str + ". And your Strength Modifier is " + strMod + "."
