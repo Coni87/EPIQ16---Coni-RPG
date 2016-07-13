@@ -6,3 +6,166 @@ Random d10
 Random d12
 Random d20
 Random d100
+
+        Random a
+        Random b
+        Random c
+        Random d
+        
+        //stats str, dex, con, int, wis, cha      
+        integer str = 0
+        integer dex = 0
+        integer con = 0
+        integer int = 0
+        integer wis = 0
+        integer cha = 0
+        
+        integer A = a:RandomIntegerBetween (1, 6)
+        integer B = b:RandomIntegerBetween (1, 6)
+        integer C = c:RandomIntegerBetween (1, 6)
+        integer D = d:RandomIntegerBetween (1, 6)
+        boolean strengthStat = false
+       
+        output "You rolled " + A +" A, "+ B +" B, "+ C +" C, "+ D +" D, "+ " for your Strength."
+        
+        repeat until strengthStat = true
+            text strength = input ("Chose 3 for your Strength Score (chose a, b, c, or d, seperated by commas, no repeats)")
+            strength = strength:ToUpperCase()
+            if strength = "A,B,C" or strength = "A, B, C"
+                str = A + B + C
+                strengthStat = true
+            elseif strength = "A,B,D" or strength = "A, B, D"
+                str = A + B + D
+                strengthStat = true
+            elseif strength = "B,C,D" or strength = "B, C, D"
+                str = B + C + D
+                strengthStat = true
+            elseif strength = "A,C,D" or strength = "A, C, D"
+                str = A + D + C
+                strengthStat = true
+            else
+                output "You have entered an error, please try again"
+                strengthStat = false
+            end
+        end
+         
+        
+        integer strMod = 0
+        if str > 10
+            strMod = (str-10)/2
+        elseif str = 9
+            strMod = -1
+        elseif str = 7
+            strMod = -2
+        elseif str = 5
+            strMod = -3
+        elseif str = 3
+            strMod = -4
+        elseif str < 10
+            strMod = -(10-str)/2
+        else str = 10
+            strMod = 0
+        end
+        output "Your strength is " + str + ". And your Strength Modifier is " + strMod + "."
+        
+        A = a:RandomIntegerBetween (1, 6)
+        B = b:RandomIntegerBetween (1, 6)
+        C = c:RandomIntegerBetween (1, 6)
+        D = d:RandomIntegerBetween (1, 6)
+        boolean dexStat = false
+       
+        output "You rolled " + A +" A, "+ B +" B, "+ C +" C, "+ D +" D, "+ " for your Dexterity."
+        
+        repeat until dexStat = true
+            text dexterity = input ("Chose 3 for your Dex Score (chose a, b, c, or d, seperated by commas, no repeats)")
+            dexterity = dexterity:ToUpperCase()
+            if dexterity = "A,B,C" or dexterity = "A, B, C"
+                dex = A + B + C
+                dexStat = true
+            elseif dexterity = "A,B,D" or dexterity = "A, B, D"
+                dex = A + B + D
+                dexStat = true
+            elseif dexterity = "B,C,D" or dexterity = "B, C, D"
+                dex = B + C + D
+                dexStat = true
+            elseif dexterity = "A,C,D" or dexterity = "A, C, D"
+                dex = A + D + C
+                dexStat = true
+            else
+                output "You have entered an error, please try again"
+                dexstat = false
+            end
+        end
+         
+        
+        integer dexMod = 0
+        if dex > 10
+            dexMod = (dex-10)/2
+        elseif dex = 9
+            dexMod = -1
+        elseif dex = 7
+            dexMod = -2
+        elseif dex = 5
+            dexMod = -3
+        elseif dex = 3
+            dexMod = -4
+        elseif dex < 10
+            dexMod = -(10-dex)/2
+        else dex = 10
+            dexMod = 0
+        end
+        output "Your Dexterity is " + dex + ". And your Dex Modifier is " + dexMod + "."
+
+        integer armorClass = 0
+        text armorStyle = input("Please choose your armor style. light, medium, or heavy")
+        output "You have choosen " + armorStyle + " armor."
+        
+        armorStyle = armorStyle:ToUpperCase()
+        text armor = ""
+        if armorStyle = "LIGHT"
+           armor = input("Please choose your armor from the list: Padded, Leather, or Studded Leather")
+           output "Your character will wear " + armor + " armor."  
+        elseif armorStyle = "MEDIUM"
+            armor = input("Please choose your armor from the list: Hide, Chain shirt, Scale mail, Breastplate, or Half plate")
+            output "Your character will wear " + armor + " armor." 
+        elseif armorStyle = "HEAVY"
+            armor = input("Please choose your armor from the list: Ring mail, Chain mail, Splint, or Plate")
+            output "Your character will wear " + armor + " armor."
+        end
+        
+        
+        armor = armor:ToLowerCase()
+        if armor = "padded"            
+            armorClass = 11 + dexMod
+        elseif armor = "leather"            
+            armorClass = 11 + dexMod
+        elseif armor = "studded Leather"            
+            armorClass = 12 + dexMod
+        elseif armor = "hide"
+            armorClass = 12 + dexMod
+        elseif armor = "scale male"
+            armorClass = 13 + dexMod
+        elseif armor = "breastplate"
+            armorClass = 14 + dexMod
+        elseif armor = "half Plate"
+            armorClass = 15 + dexMod
+        elseif armor = "ring mail"
+            armorClass = 14
+        elseif armor = "chain mail"
+            armorClass = 16
+        elseif armor = "splint"
+            armorClass = 17
+        elseif armor = "plate"
+            armorClass = 18
+        end
+
+
+        text shield = input ("Do you want a shield?")
+        shield = shield:ToLowerCase()
+        if shield = "yes"
+            armorClass = armorClass + 2
+        else
+            armorClass = armorClass
+        end
+
+        output "Your AC is " + armorClass + "."
