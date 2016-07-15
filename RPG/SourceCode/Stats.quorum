@@ -1,0 +1,143 @@
+//Player stats str, dex, con, int, wis, cha  
+
+use Libraries.Compute.Random
+use Libraries.Containers.Array
+
+class Stats 
+        Random die6
+        integer counter = 0
+        public Array<integer> stats
+        public Player player
+
+    action Main
+//        player:stats = me
+                
+        stats:Add(GetStat(0))
+        stats:Add(GetStat(1))
+        stats:Add(GetStat(2))
+        stats:Add(GetStat(3))
+        stats:Add(GetStat(4))
+        stats:Add(GetStat(5))
+        
+
+        integer strMod = StatCheck(stats:Get(0))
+        integer dexMod = StatCheck(stats:Get(1))
+        integer conMod = StatCheck(stats:Get(2))
+        integer intMod = StatCheck(stats:Get(3))
+        integer wisMod = StatCheck(stats:Get(4))
+        integer chaMod = StatCheck(stats:Get(5))
+
+        output " "
+        output " "
+        output "Here are your stats:"
+        output "Strength: " + stats:Get(0) + " Mod: " + strMod
+        output "Dexterity: " + stats:Get(1) + " Mod: " + dexMod
+        output "Constitution: " + stats:Get(2) + " Mod: " + conMod
+        output "Intelligence: " + stats:Get(3) + " Mod: " + intMod
+        output "Wisdom: " + stats:Get(4) + " Mod: " + wisMod
+        output "Charisma: " + stats:Get(5) + " Mod: " + chaMod
+        output " "
+        output " "
+
+    end
+
+
+
+action GetStat(integer statNumber) returns integer
+        integer str = 0
+Array<text> statsLabel
+
+statsLabel:Add("strength")
+statsLabel:Add("dexterity")
+statsLabel:Add("constitution")
+statsLabel:Add("intelligence")
+statsLabel:Add("wisdom")
+statsLabel:Add("charisma")
+        
+        reroll = 0
+        boolean strHappy = false
+        boolean strStat = false 
+
+        integer A = 0
+        integer B = 0
+        integer C = 0
+        integer D = 0
+
+        
+    repeat until strHappy = true  or reroll = 2  
+        A = die6:RandomIntegerBetween (1, 6)
+        B = die6:RandomIntegerBetween (1, 6)
+        C = die6:RandomIntegerBetween (1, 6)
+        D = die6:RandomIntegerBetween (1, 6)
+
+        output "You rolled " + A +" A, "+ B +" B, "+ C +" C, "+ D +" D, "+ " for your " + statsLabel:Get(counter) + "."
+
+        text happy = input ("Would you like to re-roll? yes or no")
+        happy = happy:ToLowerCase()
+        if happy = "yes" or happy = "y"
+            strHappy = false
+            reroll = reroll + 1
+            if reroll = 2
+               output "You have already re-rolled this stat."
+                strHappy = true
+            end
+        else
+            strHappy = true
+        end
+    end
+
+        repeat until strStat = true
+            text strength = input ("Chose 1 to discard")
+            output counter
+            strength = strength:ToUpperCase()
+            if  strength = "A"
+                str = D + B + C
+                strStat = true
+            elseif strength = "B"
+                str = A + C + D
+                strStat = true
+            elseif strength = "C"
+                str = A + B + D
+                strStat = true
+            elseif strength = "D"
+                str = A + B + C
+                strStat = true
+            else
+                output "You have entered an error, please try again"
+                strStat = false
+            end
+            
+        end
+
+        
+        reroll = 0
+        strHappy = false
+        strStat = false
+        counter = counter + 1
+        return str
+end
+
+ 
+    action StatCheck(integer str) returns integer
+
+        integer strMod = 0
+
+        if (str) > 10
+            strMod = ((str)-10)/2
+        elseif (str) = 9
+            strMod = -1
+        elseif (str) = 7
+            strMod = -2
+        elseif (str) = 5
+            strMod = -3
+        elseif (str) = 3
+            strMod = -4
+        elseif (str) < 10
+            strMod = -(10-(str))/2
+        else str = 10
+            strMod = 0
+        end
+        return strMod
+    
+    end
+end
