@@ -6,14 +6,17 @@
 //"Charisma: " + stats:Get(5) + " Mod: " + chaMod
 
 use Libraries.Compute.Random
+use Stats    
+//Player Race   
+
 
 class Player 
-/*
-    public Stats stats = undefined
 
-    action Main 
+public Stats newStats = undefined
+public Stats newMods = undefined
 
-//Player Race        
+   action Main 
+     
       boolean goodRace = false
  
 repeat until goodRace = true
@@ -21,85 +24,115 @@ repeat until goodRace = true
         raceChoice = raceChoice:ToLowerCase()
 
         if raceChoice = "dwarf"
-            con = stats:Get(2)
-            stats:Set(2, con+2)
+            con = newStats:stats:Get(2)
+            newStats:stats:Set(2, con+2)
             goodRace = true
             text dwarfSubRace = input ("Choose your subrace. Hill Dwarf (wis +1) or Mountain Dwarf (str + 2)")
             dwarfSubRace = dwarfSubRace:ToLowerCase()
             if dwarfSubRace = "hill dwarf" or dwarfSubRace = "hill"
-                wis = wis+1
+                wis = newStats:stats:Get(4)
+                newStats:stats:Set(4, wis+1)
             elseif dwarfSubRace = "mountain dwarf" or dwarfSubRace = "mountain"
-                str = str+2
+                str = newStats:stats:Get(0)
+                newStats:stats:Set(0, str+2)
             end
         elseif raceChoice = "elf"
-            dex = dex+2
+            dex = newStats:stats:Get(1)
+            newStats:stats:Set(1, dex+2)
             goodRace = true
             text elfSubRace = input ("Choose your subrace. High elf (Int +1), Wood elf (Wis +1) or Drow elf (Cha +1)")
             elfSubRace = elfSubRace:ToLowerCase()
             if elfSubRace = "high elf" or elfSubRace = "high"
-                int = int+1
+                int = newStats:stats:Get(4)
+                newStats:stats:Set(4,int+1)
             elseif elfSubRace = "wood elf" or elfSubRace = "wood"
-                wis = wis+1
+                wis = newStats:stats:Get(4) 
+                newStats:stats:Set(4, wis+1)
             elseif elfSubRace = "Drow elf" or elfSubRace = "drow"
-                cha = cha+1
+                cha = newStats:stats:Get(5) 
+                newStats:stats:Set(5, cha+1)
             end
         elseif raceChoice = "halfling"
-            dex = dex+2
+            dex = newStats:stats:Get(1) 
+            newStats:stats:Set(1, dex+2)
             goodRace = true
             text halfSubRace = input ("Choose your subrace. Lightfoot (Cha +1) or Stout (Con +1)")
             halfSubRace = halfSubRace:ToLowerCase()
             if halfSubRace = "lightfoot"
-                cha = cha+1
+                cha = newStats:stats:Get(5) 
+                newStats:stats:Set(5, cha+1)
             elseif halfSubRace = "stout"
-                con = con+1
+                con = newStats:stats:Get(2)
+                newStats:stats:Set(2, con+1)
             end
         elseif raceChoice = "human"
-            str = str+1
-            dex = dex+1
-            con = con+1
-            int = int+1
-            wis = wis+1
-            cha = cha+1
+            str = newStats:stats:Get(0)
+            newStats:stats:Set(0, str+1)
+            dex = newStats:stats:Get(1)
+            newStats:stats:Set(1, dex+1)
+            con = newStats:stats:Get(2)
+            newStats:stats:Set(2,con+1)
+            int = newStats:stats:Get(3)
+            newStats:stats:Set(3, int+1)
+            wis = newStats:stats:Get(4)
+            newStats:stats:Set(4, wis+1)
+            cha = newStats:stats:Get(5)
+            newStats:stats:Set(5, cha+1)
             goodRace = true
         elseif raceChoice = "dragonborn"
-            str = str+2
-            cha = cha+1
+            str = newStats:stats:Get(0)
+            newStats:stats:Set(0, str+2)
+            cha = newStats:stats:Get(5)
+            newStats:stats:Set(5, cha+1)
             goodRace = true
         elseif raceChoice = "gnome"
-            int = int+2
+            int = newStats:stats:Get(3)
+            newStats:stats:Set(3, int+2)
             goodRace = true
             text gnomeSubRace = input ("Choose your subrace. Forest gnomes(Dex +1) or Rock gnomes(Con +1)")
             gnomeSubRace = gnomeSubRace:ToLowerCase()
             if gnomeSubRace = "forest gnome" or gnomeSubRace = "forest"
-                dex = dex+1
+                dex = newStats:stats:Get(1)
+                newStats:stats:Set(1, dex+1)
             elseif gnomeSubRace = "rock gnome" or gnomeSubRace = "rock"
-                con = con+1
+                con = newStats:stats:Get(2)
+                newStats:stats:Set(2, con+1)
             end
         elseif raceChoice = "half-elf" or raceChoice = "half elf"           
-            cha = cha+2
+            cha = newStats:stats:Get(5)
+            newStats:stats:Set(5, cha+2)
             repeat 2 times
                 text statIncrease = input ("Choose other stat to increase by 1. (Str, Dex, Con, Int, or Wis)")
                 statIncrease = statIncrease:ToLowerCase()
                 if statIncrease = "str"
-                    str = str+1
+                    str = newStats:stats:Get(0)
+                    newStats:stats:Set(0, str+1)
                 elseif statIncrease = "dex"
-                    dex = dex+1
+                    dex = newStats:stats:Get(1)
+                    newStats:stats:Set(1, dex+1)
                 elseif statIncrease = "con"
-                    con = con+1
+                    con = newStats:stats:Get(2)
+                    newStats:stats:Set(2,con+1)
                 elseif statIncrease = "int"
-                    int = int+1
+                    int = newStats:stats:Get(3)
+                    newStats:stats:Set(3, int+1)
                 elseif statIncrease = "wis"
-                    wis = wis+1
+                    wis = newStats:stats:Get(4)
+                    newStats:stats:Set(4, wis+1)
                 end
             end
             goodRace = true
         elseif raceChoice = "half-orc" or raceChoice = "half orc"
-            str = str+2
-            con = con+1
+            str = newStats:stats:Get(0)
+            newStats:stats:Set(0, str+2)
+            con = newStats:stats:Get(2)
+            newStats:stats:Set(2, con+1)
             goodRace = true
         elseif raceChoice = "tiefling"
-            int = int+1
-            cha = cha+2
+            int = newStats:stats:Get(3)
+            newStats:stats:Set(3, int+1)
+            cha = newStats:stats:Get(5)
+            newStats:stats:Set(5, cha+2)
             goodRace = true
         else
             goodRace = false
@@ -107,196 +140,26 @@ repeat until goodRace = true
         end
     end
 
-        if str > 10
-            strMod = (str-10)/2
-        elseif str = 9
-            strMod = -1
-        elseif str = 7
-            strMod = -2
-        elseif str = 5
-            strMod = -3
-        elseif str = 3
-            strMod = -4
-        elseif str < 10
-            strMod = -(10-str)/2
-        else str = 10
-            strMod = 0
-        end
 
-        if dex > 10
-            dexMod = (dex-10)/2
-        elseif dex = 9
-            dexMod = -1
-        elseif dex = 7
-            dexMod = -2
-        elseif dex = 5
-            dexMod = -3
-        elseif dex = 3
-            dexMod = -4
-        elseif dex < 10
-            dexMod = -(10-dex)/2
-        else dex = 10
-            dexMod = 0
-        end        
-
-        if con > 10
-            conMod = (con-10)/2
-        elseif con = 9
-            conMod = -1
-        elseif con = 7
-            conMod = -2
-        elseif con = 5
-            conMod = -3
-        elseif con = 3
-            conMod = -4
-        elseif con < 10
-            conMod = -(10-con)/2
-        else con = 10
-            conMod = 0
-        end
-
-        if int > 10
-            intMod = (int-10)/2
-        elseif int = 9
-            intMod = -1
-        elseif int = 7
-            intMod = -2
-        elseif int = 5
-            intMod = -3
-        elseif int = 3
-            intMod = -4
-        elseif int < 10
-            intMod = -(10-int)/2
-        else int = 10
-            intMod = 0
-        end
-
-        if wis > 10
-            wisMod = (wis-10)/2
-        elseif wis = 9
-            wisMod = -1
-        elseif wis = 7
-            wisMod = -2
-        elseif wis = 5
-            wisMod = -3
-        elseif wis = 3
-            wisMod = -4
-        elseif wis < 10
-            wisMod = -(10-wis)/2
-        else wis = 10
-            wisMod = 0
-        end
-
-        if cha > 10
-            chaMod = (cha-10)/2
-        elseif cha = 9
-            chaMod = -1
-        elseif cha = 7
-            chaMod = -2
-        elseif cha = 5
-            chaMod = -3
-        elseif cha = 3
-            chaMod = -4
-        elseif cha < 10
-            chaMod = -(10-cha)/2
-        else cha = 10
-            chaMod = 0
-        end
+    
+        integer strMod = newMods:StatCheck(newStats:stats:Get(0))
+        integer dexMod = newMods:StatCheck(newStats:stats:Get(1))
+        integer conMod = newMods:StatCheck(newStats:stats:Get(2))
+        integer intMod = newMods:StatCheck(newStats:stats:Get(3))
+        integer wisMod = newMods:StatCheck(newStats:stats:Get(4))
+        integer chaMod = newMods:StatCheck(newStats:stats:Get(5))
 
         output " "
         output " "
         output "Here are your updated stats:"
-        output "Strength: " + str + " Mod: " + strMod
-        output "Dexterity: " + dex + " Mod: " + dexMod
-        output "Constitution: " + con + " Mod: " + conMod
-        output "Intelligence: " + int + " Mod: " + intMod
-        output "Wisdom: " + wis + " Mod: " + wisMod
-        output "Charisma: " + cha + " Mod: " + chaMod
+        output "Strength: " + newStats:stats:Get(0) + " Mod: " + strMod
+        output "Dexterity: " + newStats:stats:Get(1) + " Mod: " + dexMod
+        output "Constitution: " + newStats:stats:Get(2) + " Mod: " + conMod
+        output "Intelligence: " + newStats:stats:Get(3) + " Mod: " + intMod
+        output "Wisdom: " + newStats:stats:Get(4) + " Mod: " + wisMod
+        output "Charisma: " + newStats:stats:Get(5) + " Mod: " + chaMod
         output " "
         output " "
 
-//Player Armor
-        boolean armorChoice = false
-        integer armorClass = 0        
-        text armor = ""
-repeat until armorChoice = true
-        text armorStyle = input("Please choose your armor style. light, medium, or heavy")
-        
-        armorStyle = armorStyle:ToUpperCase()
-
-        if armorStyle = "LIGHT"
-           armor = input("Please choose your armor from the list: Padded, Leather, or Studded Leather")
-           output "Your character will wear " + armor + " armor."  
-        elseif armorStyle = "MEDIUM"
-            armor = input("Please choose your armor from the list: Hide, Chain shirt, Scale mail, Breastplate, or Half plate")
-            output "Your character will wear " + armor + " armor." 
-        elseif armorStyle = "HEAVY"
-            armor = input("Please choose your armor from the list: Ring mail, Chain mail, Splint, or Plate")
-            output "Your character will wear " + armor + " armor."
-        end
-        
-
-        armor = armor:ToLowerCase()
-
-        if armor = "padded"            
-            armorClass = 11 + dexMod
-            armorChoice = true
-        elseif armor = "leather"            
-            armorClass = 11 + dexMod
-            armorChoice = true
-        elseif armor = "studded leather"            
-            armorClass = 12 + dexMod
-            armorChoice = true
-        elseif armor = "hide"
-            armorClass = 12 + dexMod
-            armorChoice = true
-        elseif armor = "chain shirt"
-            armorClass = 13 + dexMod
-            armorChoice = true
-        elseif armor = "scale male"
-            armorClass = 14 + dexMod
-            armorChoice = true
-        elseif armor = "breastplate"
-            armorClass = 14 + dexMod
-            armorChoice = true
-        elseif armor = "half plate"
-            armorClass = 15 + dexMod
-            armorChoice = true
-        elseif armor = "ring mail"
-            armorClass = 14
-            armorChoice = true
-        elseif armor = "chain mail"
-            armorClass = 16
-            armorChoice = true
-        elseif armor = "splint"
-            armorClass = 17
-            armorChoice = true
-        elseif armor = "plate"
-            armorClass = 18
-            armorChoice = true
-        else
-            output "I'm sorry, that isn't a choice. Choose again."
-            armorChoice = false
-        end
 end
-
-        text shield = input ("Do you want a shield?")
-        shield = shield:ToLowerCase()
-        if shield = "yes" or shield = "y"
-            armorClass = armorClass + 2
-            output " "
-            output " "
-            output "Your character will wear " + armor + " armor with a shield."
-        else
-            armorClass = armorClass
-            output " "
-            output " "
-            output "Your character will wear " + armor + " armor. You do not have a shield."
-        end
-        
-        output "Your AC is " + armorClass + "."
-    end
 end
-*/
-end
-

@@ -1,5 +1,5 @@
 use Libraries.Compute.Random
-//use Player
+use Player
 use Stats
 
 Random d4
@@ -10,7 +10,9 @@ Random d12
 Random d20
 Random d100
 
-//Player character
-//character:Main()
 Stats stats
 stats:Main()
+Player character
+character:newStats = stats
+character:newMods = stats
+character:Main()

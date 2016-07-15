@@ -10,7 +10,7 @@ class Stats
         public Player player
 
     action Main
-//        player:stats = me
+        player:newStats = me
                 
         stats:Add(GetStat(0))
         stats:Add(GetStat(1))
@@ -88,7 +88,6 @@ statsLabel:Add("charisma")
 
         repeat until strStat = true
             text strength = input ("Chose 1 to discard")
-            output counter
             strength = strength:ToUpperCase()
             if  strength = "A"
                 str = D + B + C
