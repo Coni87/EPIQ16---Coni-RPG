@@ -1,6 +1,7 @@
 use Libraries.Compute.Random
 use Player
 use Stats
+use Armor
 
 Random d4
 Random d6
@@ -12,7 +13,13 @@ Random d100
 
 Stats stats
 stats:Main()
+
 Player character
 character:newStats = stats
 character:newMods = stats
 character:Main()
+
+Armor protection
+protection:dexStat = stats
+protection:newStats = stats
+protection:Main()
