@@ -1,0 +1,31 @@
+//// Hit Dice d12 + conMod (@ 1st level)
+////Saving Throws: Str & Con
+////Armor & Weapons: Light & Medium armor, shields, Simple & Martial weapons
+////Skills (2): Animal Handling, Athletics, Intimidation, Nature, Perception, and Survival
+
+use Player
+use Stats
+use Classes
+use Libraries.Compute.Random 
+
+class Barbarian
+    public Stats blah = undefined
+    public Stats statUse = undefined
+Stats stats
+    
+    Random d12
+    integer con = 0
+    
+    action Main
+        output " "
+        blah = stats
+        statUse = stats
+        HitPoints()
+    end
+
+    action HitPoints
+        integer con = statUse:StatCheck(blah:stats:Get(2))      
+        integer hitpoints = 12 + con
+        output hitpoints + " HP"
+    end
+end

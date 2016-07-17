@@ -1,0 +1,44 @@
+use Libraries.Containers.Array
+use Libraries.Compute.Random
+use Barbarian
+use Stats
+//Classes: Barbarian, Bard, Cleric, Druid, Fighter, Monk, Paladin, Ranger, Rogue, Sorcerer, Warlock, Wizard
+class Classes 
+        public integer xp = 0
+        integer levelNumber = 0
+    
+        Random d12
+
+        Barbarian barbarian
+        Stats stats
+
+        
+    action Main
+             boolean classGood = false
+             repeat until classGood = true
+             text classChoice = input ("Chose your class. barbarian, bard, cleric, druid, fighter, monk, paladin, ranger, rogue, socerer, warlock, wizard.")
+        classChoice = classChoice:ToLowerCase()
+
+            if classChoice = "barbarian"
+                classGood = true
+                barbarian:blah = stats
+                barbarian:statUse = stats
+                barbarian:Main()
+            else
+                classGood = false
+                output "Please make another choice."
+            end
+        end
+    end
+    
+    action Level
+        integer levelNumber = 0
+        if xp < 300
+            levelNumber = 1
+        elseif xp > 300 and xp < 900
+            levelNumber = 2
+        elseif xp > 900 and xp < 2700
+            levelNumber = 3
+        end
+    end
+end

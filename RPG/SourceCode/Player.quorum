@@ -1,5 +1,7 @@
 //Player Race
 use Libraries.Compute.Random
+use Classes
+use Barbarian
  
 class Player 
 
@@ -26,6 +28,7 @@ public Stats newMods = undefined
                     str = newStats:stats:Get(0)
                     newStats:stats:Set(0, str+2)
                 end
+                output "Here are your updated stats for your " + raceChoice + "."
             elseif raceChoice = "elf"
                 dex = newStats:stats:Get(1)
                 newStats:stats:Set(1, dex+2)
@@ -42,6 +45,7 @@ public Stats newMods = undefined
                     cha = newStats:stats:Get(5) 
                     newStats:stats:Set(5, cha+1)
                 end
+                output "Here are your updated stats for your " + raceChoice + "."
             elseif raceChoice = "halfling"
                 dex = newStats:stats:Get(1) 
                 newStats:stats:Set(1, dex+2)
@@ -55,6 +59,7 @@ public Stats newMods = undefined
                     con = newStats:stats:Get(2)
                     newStats:stats:Set(2, con+1)
                 end
+                output "Here are your updated stats for your " + raceChoice + "."
             elseif raceChoice = "human"
                 str = newStats:stats:Get(0)
                 newStats:stats:Set(0, str+1)
@@ -69,12 +74,14 @@ public Stats newMods = undefined
                 cha = newStats:stats:Get(5)
                 newStats:stats:Set(5, cha+1)
                 goodRace = true
+                output "Here are your updated stats for your " + raceChoice + "."
             elseif raceChoice = "dragonborn"
                 str = newStats:stats:Get(0)
                 newStats:stats:Set(0, str+2)
                 cha = newStats:stats:Get(5)
                 newStats:stats:Set(5, cha+1)
                 goodRace = true
+                output "Here are your updated stats for your " + raceChoice + "."
             elseif raceChoice = "gnome"
                 int = newStats:stats:Get(3)
                 newStats:stats:Set(3, int+2)
@@ -88,6 +95,7 @@ public Stats newMods = undefined
                     con = newStats:stats:Get(2)
                     newStats:stats:Set(2, con+1)
                 end
+                    output "Here are your updated stats for your " + raceChoice + "."
             elseif raceChoice = "half-elf" or raceChoice = "half elf"           
                 cha = newStats:stats:Get(5)
                 newStats:stats:Set(5, cha+2)
@@ -112,26 +120,27 @@ public Stats newMods = undefined
                     end
                 end
                 goodRace = true
+                output "Here are your updated stats for your " + raceChoice + "."
             elseif raceChoice = "half-orc" or raceChoice = "half orc"
                 str = newStats:stats:Get(0)
                 newStats:stats:Set(0, str+2)
                 con = newStats:stats:Get(2)
                 newStats:stats:Set(2, con+1)
                 goodRace = true
+                output "Here are your updated stats for your " + raceChoice + "."
             elseif raceChoice = "tiefling"
                 int = newStats:stats:Get(3)
                 newStats:stats:Set(3, int+1)
                 cha = newStats:stats:Get(5)
                 newStats:stats:Set(5, cha+2)
                 goodRace = true
+                output "Here are your updated stats for your " + raceChoice + "."
             else
                 goodRace = false
                 output "That is not a recognized race. Please choose again."
             end
-    end
 
-
-    
+    end        
         integer strMod = newMods:StatCheck(newStats:stats:Get(0))
         integer dexMod = newMods:StatCheck(newStats:stats:Get(1))
         integer conMod = newMods:StatCheck(newStats:stats:Get(2))
@@ -140,8 +149,6 @@ public Stats newMods = undefined
         integer chaMod = newMods:StatCheck(newStats:stats:Get(5))
 
         output " "
-        output " "
-        output "Here are your updated stats:"
         output "Strength: " + newStats:stats:Get(0) + " Mod: " + strMod
         output "Dexterity: " + newStats:stats:Get(1) + " Mod: " + dexMod
         output "Constitution: " + newStats:stats:Get(2) + " Mod: " + conMod
@@ -150,6 +157,5 @@ public Stats newMods = undefined
         output "Charisma: " + newStats:stats:Get(5) + " Mod: " + chaMod
         output " "
         output " "
-
-end
+    end
 end

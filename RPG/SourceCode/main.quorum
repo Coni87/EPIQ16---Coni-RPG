@@ -2,6 +2,8 @@ use Libraries.Compute.Random
 use Player
 use Stats
 use Armor
+use Barbarian
+use Classes
 
 Random d4
 Random d6
@@ -10,6 +12,7 @@ Random d10
 Random d12
 Random d20
 Random d100
+
 
 Stats stats
 stats:Main()
@@ -23,3 +26,6 @@ Armor protection
 protection:dexStat = stats
 protection:newStats = stats
 protection:Main()
+
+Classes barbarian
+barbarian:Main()
