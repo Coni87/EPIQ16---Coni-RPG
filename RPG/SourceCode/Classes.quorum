@@ -13,17 +13,19 @@ class Classes
         Stats stats
 
         
-    action Main
-             boolean classGood = false
-             repeat until classGood = true
-             text classChoice = input ("Chose your class. barbarian, bard, cleric, druid, fighter, monk, paladin, ranger, rogue, socerer, warlock, wizard.")
-        classChoice = classChoice:ToLowerCase()
+    action Main (Stats s)
+            stats = s
+            boolean classGood = false
+        repeat until classGood = true
+            text classChoice = input ("Chose your class. barbarian, bard, cleric, druid, fighter, monk, paladin, ranger, rogue, socerer, warlock, wizard.")
+            classChoice = classChoice:ToLowerCase()
 
             if classChoice = "barbarian"
                 classGood = true
+                barbarian:Main(stats)
                 barbarian:blah = stats
                 barbarian:statUse = stats
-                barbarian:Main()
+
             else
                 classGood = false
                 output "Please make another choice."

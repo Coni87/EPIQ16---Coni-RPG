@@ -11,13 +11,13 @@ use Libraries.Compute.Random
 class Barbarian
     public Stats blah = undefined
     public Stats statUse = undefined
-Stats stats
     
     Random d12
     integer con = 0
     
-    action Main
+    action Main (Stats stats)
         output " "
+        
         blah = stats
         statUse = stats
         HitPoints()

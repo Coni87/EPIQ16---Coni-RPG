@@ -28,4 +28,6 @@ protection:newStats = stats
 protection:Main()
 
 Classes barbarian
-barbarian:Main()
+//barbarian:blah = stats
+//barbarian:statUse = stats
+barbarian:Main(stats)
