@@ -6,7 +6,7 @@ class Stats
     Random die6
     integer counter = 0
     public Array<integer> stats
-    public Player player
+    Player player
 
     action Main
         player:newStats = me

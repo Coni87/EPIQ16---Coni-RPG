@@ -1,34 +1,20 @@
-//// Hit Dice d12 + conMod (@ 1st level)
-////Saving Throws: Str & Con
-////Armor & Weapons: Light & Medium armor, shields, Simple & Martial weapons
-////Skills (2): Animal Handling, Athletics, Intimidation, Nature, Perception, and Survival
-
-use Player
-use Stats
-use Classes
-use Libraries.Compute.Random 
-
-class Barbarian
+class Monk
     public Stats blah = undefined
     public Stats statUse = undefined
     public Player raceMod = undefined
-    public Player player = undefined
-
-    Random d12
     integer con = 0
-    raceMod = player 
-    
+
     action Main (Stats stats)
         output " "        
         blah = stats
         statUse = stats
- 
         HitPoints()
     end
 
+
     action HitPoints
         integer con = statUse:StatCheck(blah:stats:Get(2))      
-        integer hitpoints = 12 + con
+        integer hitpoints = 8 + con
         text racePick = raceMod:race:Get(0)
         if racePick = "hill elf"
             hitpoints = hitpoints + 1

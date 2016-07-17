@@ -27,7 +27,10 @@ protection:dexStat = stats
 protection:newStats = stats
 protection:Main()
 
-Classes barbarian
-//barbarian:blah = stats
-//barbarian:statUse = stats
-barbarian:Main(stats)
+
+Barbarian barbarian
+barbarian:raceMod = character
+
+Classes classChoice
+classChoice:Main(stats)
+

@@ -2,31 +2,39 @@
 use Libraries.Compute.Random
 use Classes
 use Barbarian
+use Libraries.Containers.Array
  
 class Player 
 
 public Stats newStats = undefined
 public Stats newMods = undefined
-
+integer speed = 0
+boolean darkVision = false
+Classes classMods
+public Array<text> race
     action Main 
         boolean goodRace = false
  
         repeat until goodRace = true
-            text raceChoice = input("Please choose your race. Dwarf, Elf, Halfling, Human, Dragonborn, Gnome, Half-elf, Half-orc, Tiefling")
+            public text raceChoice = input("Please choose your race. Dwarf, Elf, Halfling, Human, Dragonborn, Gnome, Half-elf, Half-orc, Tiefling")
             raceChoice = raceChoice:ToLowerCase()
 
             if raceChoice = "dwarf"
                 con = newStats:stats:Get(2)
                 newStats:stats:Set(2, con+2)
+                speed = 25
+                darkVision = true
                 goodRace = true
                 text dwarfSubRace = input ("Choose your subrace. Hill Dwarf (wis +1) or Mountain Dwarf (str + 2)")
                 dwarfSubRace = dwarfSubRace:ToLowerCase()
                 if dwarfSubRace = "hill dwarf" or dwarfSubRace = "hill"
                     wis = newStats:stats:Get(4)
                     newStats:stats:Set(4, wis+1)
+                    race:Add(0, "hill dwarf")
                 elseif dwarfSubRace = "mountain dwarf" or dwarfSubRace = "mountain"
                     str = newStats:stats:Get(0)
                     newStats:stats:Set(0, str+2)
+                    race:Add(0,"mountain dwarf")
                 end
                 output "Here are your updated stats for your " + raceChoice + "."
             elseif raceChoice = "elf"
@@ -38,12 +46,15 @@ public Stats newMods = undefined
                 if elfSubRace = "high elf" or elfSubRace = "high"
                     int = newStats:stats:Get(4)
                     newStats:stats:Set(4,int+1)
+                    race:Add(0, "high elf")
                 elseif elfSubRace = "wood elf" or elfSubRace = "wood"
                     wis = newStats:stats:Get(4) 
                     newStats:stats:Set(4, wis+1)
+                    race:Add(0, "wood elfe")
                 elseif elfSubRace = "Drow elf" or elfSubRace = "drow"
                     cha = newStats:stats:Get(5) 
                     newStats:stats:Set(5, cha+1)
+                    race:Add(0,"drow elf")
                 end
                 output "Here are your updated stats for your " + raceChoice + "."
             elseif raceChoice = "halfling"
@@ -55,9 +66,11 @@ public Stats newMods = undefined
                 if halfSubRace = "lightfoot"
                     cha = newStats:stats:Get(5) 
                     newStats:stats:Set(5, cha+1)
+                    race:Add(0, "lightfoot halfling")
                 elseif halfSubRace = "stout"
                     con = newStats:stats:Get(2)
                     newStats:stats:Set(2, con+1)
+                    race:Add(0, "stout halfling")
                 end
                 output "Here are your updated stats for your " + raceChoice + "."
             elseif raceChoice = "human"
@@ -73,6 +86,7 @@ public Stats newMods = undefined
                 newStats:stats:Set(4, wis+1)
                 cha = newStats:stats:Get(5)
                 newStats:stats:Set(5, cha+1)
+                race:Add(0, "human")
                 goodRace = true
                 output "Here are your updated stats for your " + raceChoice + "."
             elseif raceChoice = "dragonborn"
@@ -80,6 +94,7 @@ public Stats newMods = undefined
                 newStats:stats:Set(0, str+2)
                 cha = newStats:stats:Get(5)
                 newStats:stats:Set(5, cha+1)
+                race:Add(0, "dragonborn")
                 goodRace = true
                 output "Here are your updated stats for your " + raceChoice + "."
             elseif raceChoice = "gnome"
@@ -91,9 +106,11 @@ public Stats newMods = undefined
                 if gnomeSubRace = "forest gnome" or gnomeSubRace = "forest"
                     dex = newStats:stats:Get(1)
                     newStats:stats:Set(1, dex+1)
+                    race:Add(0, "forest gnome")
                 elseif gnomeSubRace = "rock gnome" or gnomeSubRace = "rock"
                     con = newStats:stats:Get(2)
                     newStats:stats:Set(2, con+1)
+                    race:Add(0, "rock gnome")
                 end
                     output "Here are your updated stats for your " + raceChoice + "."
             elseif raceChoice = "half-elf" or raceChoice = "half elf"           
@@ -120,6 +137,7 @@ public Stats newMods = undefined
                     end
                 end
                 goodRace = true
+                race:Add(0, "half elf")
                 output "Here are your updated stats for your " + raceChoice + "."
             elseif raceChoice = "half-orc" or raceChoice = "half orc"
                 str = newStats:stats:Get(0)
@@ -127,6 +145,7 @@ public Stats newMods = undefined
                 con = newStats:stats:Get(2)
                 newStats:stats:Set(2, con+1)
                 goodRace = true
+                race:Add(0, "half orc")
                 output "Here are your updated stats for your " + raceChoice + "."
             elseif raceChoice = "tiefling"
                 int = newStats:stats:Get(3)
@@ -134,6 +153,7 @@ public Stats newMods = undefined
                 cha = newStats:stats:Get(5)
                 newStats:stats:Set(5, cha+2)
                 goodRace = true
+                race:Add(0, "tiefling")
                 output "Here are your updated stats for your " + raceChoice + "."
             else
                 goodRace = false

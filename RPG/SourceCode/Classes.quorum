@@ -1,7 +1,20 @@
 use Libraries.Containers.Array
 use Libraries.Compute.Random
-use Barbarian
 use Stats
+
+use Barbarian
+use Bard
+use Cleric
+use Druid
+use Fighter
+use Monk
+use Paladin
+use Ranger
+use Rogue
+use Sorcerer
+use Warlock
+use Wizard
+
 //Classes: Barbarian, Bard, Cleric, Druid, Fighter, Monk, Paladin, Ranger, Rogue, Sorcerer, Warlock, Wizard
 class Classes 
         public integer xp = 0
@@ -10,14 +23,25 @@ class Classes
         Random d12
 
         Barbarian barbarian
-        Stats stats
+        Bard bard
+        Cleric cleric
+        Druid druid
+        Fighter fighter
+        Monk monk
+        Paladin paladin
+        Ranger ranger
+        Rogue rogue
+        Sorcerer sorcerer
+        Warlock warlock
+        Wizard wizard
 
+        Stats stats = undefined
         
     action Main (Stats s)
             stats = s
             boolean classGood = false
         repeat until classGood = true
-            text classChoice = input ("Chose your class. barbarian, bard, cleric, druid, fighter, monk, paladin, ranger, rogue, socerer, warlock, wizard.")
+            text classChoice = input ("Chose your class. barbarian, bard, cleric, druid, fighter, monk, paladin, ranger, rogue, sorcerer, warlock, wizard.")
             classChoice = classChoice:ToLowerCase()
 
             if classChoice = "barbarian"
@@ -25,7 +49,61 @@ class Classes
                 barbarian:Main(stats)
                 barbarian:blah = stats
                 barbarian:statUse = stats
-
+            elseif classChoice = "bard"
+                classGood = true
+                bard:Main(stats)
+                bard:blah = stats
+                bard:statUse = stats
+            elseif classChoice = "cleric"
+                classGood = true
+                cleric:Main(stats)
+                cleric:blah = stats
+                cleric:statUse = stats
+            elseif classChoice = "druid"
+                classGood = true
+                druid:Main(stats)
+                druid:blah = stats
+                druid:statUse = stats 
+            elseif classChoice = "fighter"
+                classGood = true
+                fighter:Main(stats)
+                fighter:blah = stats
+                fighter:statUse = stats 
+            elseif classChoice = "monk"
+                classGood = true
+                monk:Main(stats)
+                monk:blah = stats
+                monk:statUse = stats
+            elseif classChoice = "paladin"
+                classGood = true
+                paladin:Main(stats)
+                paladin:blah = stats
+                paladin:statUse = stats  
+            elseif classChoice = "ranger"
+                classGood = true
+                ranger:Main(stats)
+                ranger:blah = stats
+                ranger:statUse = stats 
+            elseif classChoice = "rogue"
+                classGood = true
+                rogue:Main(stats)
+                rogue:blah = stats
+                rogue:statUse = stats
+            elseif classChoice = "sorcerer"
+                classGood = true
+                sorcerer:Main(stats)
+                sorcerer:blah = stats
+                sorcerer:statUse = stats
+            elseif classChoice = "warlock"
+                classGood = true
+                warlock:Main(stats)
+                warlock:blah = stats
+                warlock:statUse = stats
+            elseif classChoice = "wizard"
+                classGood = true
+                wizard:Main(stats)
+                wizard:blah = stats
+                wizard:statUse = stats
             else
                 classGood = false
                 output "Please make another choice."
