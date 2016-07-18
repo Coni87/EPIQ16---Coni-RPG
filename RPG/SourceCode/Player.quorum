@@ -40,6 +40,8 @@ public Array<text> race
             elseif raceChoice = "elf"
                 dex = newStats:stats:Get(1)
                 newStats:stats:Set(1, dex+2)
+                speed = 30
+                darkVision = true
                 goodRace = true
                 text elfSubRace = input ("Choose your subrace. High elf (Int +1), Wood elf (Wis +1) or Drow elf (Cha +1)")
                 elfSubRace = elfSubRace:ToLowerCase()
@@ -50,7 +52,8 @@ public Array<text> race
                 elseif elfSubRace = "wood elf" or elfSubRace = "wood"
                     wis = newStats:stats:Get(4) 
                     newStats:stats:Set(4, wis+1)
-                    race:Add(0, "wood elfe")
+                    speed = 35
+                    race:Add(0, "wood elf")
                 elseif elfSubRace = "Drow elf" or elfSubRace = "drow"
                     cha = newStats:stats:Get(5) 
                     newStats:stats:Set(5, cha+1)
@@ -60,6 +63,7 @@ public Array<text> race
             elseif raceChoice = "halfling"
                 dex = newStats:stats:Get(1) 
                 newStats:stats:Set(1, dex+2)
+                speed = 25
                 goodRace = true
                 text halfSubRace = input ("Choose your subrace. Lightfoot (Cha +1) or Stout (Con +1)")
                 halfSubRace = halfSubRace:ToLowerCase()
@@ -86,6 +90,7 @@ public Array<text> race
                 newStats:stats:Set(4, wis+1)
                 cha = newStats:stats:Get(5)
                 newStats:stats:Set(5, cha+1)
+                speed = 30
                 race:Add(0, "human")
                 goodRace = true
                 output "Here are your updated stats for your " + raceChoice + "."
@@ -95,11 +100,14 @@ public Array<text> race
                 cha = newStats:stats:Get(5)
                 newStats:stats:Set(5, cha+1)
                 race:Add(0, "dragonborn")
+                speed = 30
                 goodRace = true
                 output "Here are your updated stats for your " + raceChoice + "."
             elseif raceChoice = "gnome"
                 int = newStats:stats:Get(3)
                 newStats:stats:Set(3, int+2)
+                speed = 25
+                darkVision = true
                 goodRace = true
                 text gnomeSubRace = input ("Choose your subrace. Forest gnomes(Dex +1) or Rock gnomes(Con +1)")
                 gnomeSubRace = gnomeSubRace:ToLowerCase()
@@ -136,6 +144,8 @@ public Array<text> race
                         newStats:stats:Set(4, wis+1)
                     end
                 end
+                speed = 30
+                darkVision = true
                 goodRace = true
                 race:Add(0, "half elf")
                 output "Here are your updated stats for your " + raceChoice + "."
@@ -144,6 +154,8 @@ public Array<text> race
                 newStats:stats:Set(0, str+2)
                 con = newStats:stats:Get(2)
                 newStats:stats:Set(2, con+1)
+                speed = 30
+                darkVision = true
                 goodRace = true
                 race:Add(0, "half orc")
                 output "Here are your updated stats for your " + raceChoice + "."
@@ -152,6 +164,8 @@ public Array<text> race
                 newStats:stats:Set(3, int+1)
                 cha = newStats:stats:Get(5)
                 newStats:stats:Set(5, cha+2)
+                speed = 30
+                darkVision = true
                 goodRace = true
                 race:Add(0, "tiefling")
                 output "Here are your updated stats for your " + raceChoice + "."

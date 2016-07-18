@@ -3,6 +3,17 @@ use Player
 use Stats
 use Armor
 use Barbarian
+use Bard
+use Cleric
+use Druid
+use Fighter
+use Monk
+use Paladin
+use Ranger
+use Rogue
+use Sorcerer
+use Warlock
+use Wizard
 use Classes
 
 Random d4
@@ -31,6 +42,38 @@ protection:Main()
 Barbarian barbarian
 barbarian:raceMod = character
 
-Classes classChoice
-classChoice:Main(stats)
+Bard bard
+bard:raceMod = character
 
+Cleric cleric
+cleric:raceMod = character
+
+Druid druid
+druid:raceMod = character
+
+Fighter fighter
+fighter:raceMod = character
+
+Monk monk
+monk:raceMod = character
+
+Paladin paladin
+paladin:raceMod = character
+
+Ranger ranger
+ranger:raceMod = character
+
+Rogue rogue
+rogue:raceMod = character
+
+Sorcerer sorcerer
+sorcerer:raceMod = character
+
+Warlock warlock
+warlock:raceMod = character
+
+Wizard wizard
+wizard:raceMod = character
+
+Classes classChoice
+classChoice:Main(stats, character)

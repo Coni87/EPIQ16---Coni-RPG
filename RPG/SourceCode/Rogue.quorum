@@ -4,10 +4,11 @@ class Rogue
     public Player raceMod = undefined
     integer con = 0
 
-    action Main (Stats stats)
+    action Main (Stats stats, Player play)
         output " "        
         blah = stats
         statUse = stats
+        raceMod = play
         HitPoints()
     end
 
@@ -16,7 +17,7 @@ class Rogue
         integer con = statUse:StatCheck(blah:stats:Get(2))      
         integer hitpoints = 8 + con
         text racePick = raceMod:race:Get(0)
-        if racePick = "hill elf"
+        if racePick = "hill dwarf"
             hitpoints = hitpoints + 1
         end
         output hitpoints + " HP"

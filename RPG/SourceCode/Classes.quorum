@@ -15,6 +15,8 @@ use Sorcerer
 use Warlock
 use Wizard
 
+use Player
+
 //Classes: Barbarian, Bard, Cleric, Druid, Fighter, Monk, Paladin, Ranger, Rogue, Sorcerer, Warlock, Wizard
 class Classes 
         public integer xp = 0
@@ -36,9 +38,12 @@ class Classes
         Wizard wizard
 
         Stats stats = undefined
+        Player play = undefined
         
-    action Main (Stats s)
+    action Main (Stats s, Player p)
             stats = s
+            play = p
+
             boolean classGood = false
         repeat until classGood = true
             text classChoice = input ("Chose your class. barbarian, bard, cleric, druid, fighter, monk, paladin, ranger, rogue, sorcerer, warlock, wizard.")
@@ -46,62 +51,62 @@ class Classes
 
             if classChoice = "barbarian"
                 classGood = true
-                barbarian:Main(stats)
+                barbarian:Main(stats, p)
                 barbarian:blah = stats
                 barbarian:statUse = stats
             elseif classChoice = "bard"
                 classGood = true
-                bard:Main(stats)
+                bard:Main(stats, p)
                 bard:blah = stats
                 bard:statUse = stats
             elseif classChoice = "cleric"
                 classGood = true
-                cleric:Main(stats)
+                cleric:Main(stats, p)
                 cleric:blah = stats
                 cleric:statUse = stats
             elseif classChoice = "druid"
                 classGood = true
-                druid:Main(stats)
+                druid:Main(stats, p)
                 druid:blah = stats
                 druid:statUse = stats 
             elseif classChoice = "fighter"
                 classGood = true
-                fighter:Main(stats)
+                fighter:Main(stats, p)
                 fighter:blah = stats
                 fighter:statUse = stats 
             elseif classChoice = "monk"
                 classGood = true
-                monk:Main(stats)
+                monk:Main(stats, p)
                 monk:blah = stats
                 monk:statUse = stats
             elseif classChoice = "paladin"
                 classGood = true
-                paladin:Main(stats)
+                paladin:Main(stats, p)
                 paladin:blah = stats
                 paladin:statUse = stats  
             elseif classChoice = "ranger"
                 classGood = true
-                ranger:Main(stats)
+                ranger:Main(stats, p)
                 ranger:blah = stats
                 ranger:statUse = stats 
             elseif classChoice = "rogue"
                 classGood = true
-                rogue:Main(stats)
+                rogue:Main(stats, p)
                 rogue:blah = stats
                 rogue:statUse = stats
             elseif classChoice = "sorcerer"
                 classGood = true
-                sorcerer:Main(stats)
+                sorcerer:Main(stats, p)
                 sorcerer:blah = stats
                 sorcerer:statUse = stats
             elseif classChoice = "warlock"
                 classGood = true
-                warlock:Main(stats)
+                warlock:Main(stats, p)
                 warlock:blah = stats
                 warlock:statUse = stats
             elseif classChoice = "wizard"
                 classGood = true
-                wizard:Main(stats)
+                wizard:Main(stats, p)
                 wizard:blah = stats
                 wizard:statUse = stats
             else
