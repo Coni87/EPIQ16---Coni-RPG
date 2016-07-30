@@ -1,68 +1,131 @@
-//Player Armor
-class Armor 
+use Classes
 
+
+class Armor 
     public Stats dexStat = undefined
     public Stats newStats = undefined
+    public Classes classChoice = undefined
    
-    action Main
+    action Main (Classes classes)
+        integer dexMod = dexStat:StatCheck(newStats:stats:Get(1))
+        integer conMod = dexStat:StatCheck(newStats:stats:Get(2))
 
         boolean armorChoice = false
+        classChoice = classes
         integer armorClass = 0        
         text armor = ""
 
         repeat until armorChoice = true
-            text armorStyle = input("Please choose your armor style. light, medium, or heavy")
+        text classPick = classChoice:classes:Get(0)
+        if classPick = "barbarian"
+            text armorStyle = input("Please choose your armor style. light, medium, heavy, or none")
             armorStyle = armorStyle:ToUpperCase()
             if armorStyle = "LIGHT"
-                armor = input("Please choose your armor from the list: Padded, Leather, or Studded Leather")
+                armor = input("You are proficient in light armor. Please choose your armor from the list: Padded, Leather, or Studded Leather")
+                armorClass = 2
+                output " " 
                 output "Your character will wear " + armor + " armor."  
             elseif armorStyle = "MEDIUM"
-                armor = input("Please choose your armor from the list: Hide, Chain shirt, Scale mail, Breastplate, or Half plate")
+                armor = input("You are proficient in medium armor. Please choose your armor from the list: Hide, Chain shirt, Scale mail, Breastplate, or Half plate")
+                armorClass = 2
+                output " "
                 output "Your character will wear " + armor + " armor." 
             elseif armorStyle = "HEAVY"
                 armor = input("Please choose your armor from the list: Ring mail, Chain mail, Splint, or Plate")
+                output " " 
+                output "Your character will wear " + armor + " armor."
+            elseif armorStyle = "NONE"
+                armor = "none"
+                armorClass = 10 + dexMod + conMod
+                output " " 
+                output "Your character will not wear armor."
+
+                text shield = input ("Do you want a shield?")
+                shield = shield:ToLowerCase()
+
+                if shield = "yes" or shield = "y"
+                    armorClass = armorClass + 4
+                    output " "
+                    output " "
+                    output "You are proficient with a shield. Your character will wear " + armor + " armor with a shield."
+                else
+                    armorClass = armorClass
+                    output " "
+                    output " "
+                    output "Your character will wear " + armor + " armor. You do not have a shield."
+                end
+            end
+        elseif classPick = "bard"
+            text armorStyle = input("Please choose your armor style. light, medium, or heavy")
+            armorStyle = armorStyle:ToUpperCase()
+            if armorStyle = "LIGHT"
+                armor = input("You are proficient with light armor. Please choose your armor from the list: Padded, Leather, or Studded Leather")
+                armorClass = 2
+                output " " 
+                output "Your character will wear " + armor + " armor."  
+            elseif armorStyle = "MEDIUM"
+                armor = input("Please choose your armor from the list: Hide, Chain shirt, Scale mail, Breastplate, or Half plate")
+                output " " 
+                output "Your character will wear " + armor + " armor." 
+            elseif armorStyle = "HEAVY"
+                armor = input("Please choose your armor from the list: Ring mail, Chain mail, Splint, or Plate")
+                output " " 
                 output "Your character will wear " + armor + " armor."
             end
-        
+            text shield = input ("Do you want a shield?")
+            shield = shield:ToLowerCase()
+
+            if shield = "yes" or shield = "y"
+                armorClass = armorClass + 2
+                output " "
+                output " "
+                output "Your character will wear " + armor + " armor with a shield."
+            else
+                armorClass = armorClass
+                output " "
+                output " "
+                output "Your character will wear " + armor + " armor. You do not have a shield."
+            end
+        end
             armor = armor:ToLowerCase()
 
-            integer dexMod = dexStat:StatCheck(newStats:stats:Get(1))
-
             if armor = "padded"            
-                armorClass = 11 + dexMod
+                armorClass = armorClass + 11 + dexMod
                 armorChoice = true
             elseif armor = "leather"            
-                armorClass = 11 + dexMod
+                armorClass = armorClass + 11 + dexMod
                 armorChoice = true
             elseif armor = "studded leather"            
-                armorClass = 12 + dexMod
+                armorClass = armorClass + 12 + dexMod
                 armorChoice = true
             elseif armor = "hide"
-                armorClass = 12 + dexMod
+                armorClass = armorClass + 12 + dexMod
                 armorChoice = true
             elseif armor = "chain shirt"
-                armorClass = 13 + dexMod
+                armorClass = armorClass + 13 + dexMod
                 armorChoice = true
             elseif armor = "scale male"
-                armorClass = 14 + dexMod
+                armorClass = armorClass + 14 + dexMod
                 armorChoice = true
             elseif armor = "breastplate"
-                armorClass = 14 + dexMod
+                armorClass = armorClass + 14 + dexMod
                 armorChoice = true
             elseif armor = "half plate"
-                armorClass = 15 + dexMod
+                armorClass = armorClass + 15 + dexMod
                 armorChoice = true
             elseif armor = "ring mail"
-                armorClass = 14
+                armorClass = armorClass + 14
                 armorChoice = true
             elseif armor = "chain mail"
-                armorClass = 16
+                armorClass = armorClass + 16
                 armorChoice = true
             elseif armor = "splint"
-                armorClass = 17
+                armorClass = armorClass + 17
                 armorChoice = true
             elseif armor = "plate"
-                armorClass = 18
+                armorClass = armorClass + 18
+                armorChoice = true
+            elseif armor = "none"
                 armorChoice = true
             else
                 output "I'm sorry, that isn't a choice. Choose again."
@@ -70,21 +133,7 @@ class Armor
             end
         end
 
-        text shield = input ("Do you want a shield?")
-        shield = shield:ToLowerCase()
-        
-        if shield = "yes" or shield = "y"
-            armorClass = armorClass + 2
-            output " "
-            output " "
-            output "Your character will wear " + armor + " armor with a shield."
-        else
-            armorClass = armorClass
-            output " "
-            output " "
-            output "Your character will wear " + armor + " armor. You do not have a shield."
-        end
-        
+        output " "
         output "Your AC is " + armorClass + "."
     end
 end

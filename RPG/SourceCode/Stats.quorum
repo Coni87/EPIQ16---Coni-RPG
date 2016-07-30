@@ -67,6 +67,7 @@ class Stats
             C = die6:RandomIntegerBetween (1, 6)
             D = die6:RandomIntegerBetween (1, 6)
 
+            output " " 
             output "You rolled " + A +" A, "+ B +" B, "+ C +" C, "+ D +" D, "+ " for your " + statsLabel:Get(counter) + "."
 
             text happy = input ("Would you like to re-roll? yes or no")

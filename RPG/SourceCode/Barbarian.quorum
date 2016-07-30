@@ -33,6 +33,8 @@ class Barbarian
         text racePick = raceMod:race:Get(0)
         if racePick = "hill dwarf"
             hitpoints = hitpoints + 1
+        else
+            hitpoits = hitpoints
         end
         output hitpoints + " HP"
     end

@@ -39,6 +39,7 @@ class Classes
 
         Stats stats = undefined
         Player play = undefined
+        public Array<text> classes
         
     action Main (Stats s, Player p)
             stats = s
@@ -46,7 +47,7 @@ class Classes
 
             boolean classGood = false
         repeat until classGood = true
-            text classChoice = input ("Chose your class. barbarian, bard, cleric, druid, fighter, monk, paladin, ranger, rogue, sorcerer, warlock, wizard.")
+            text classChoice = input ("Choose your class. barbarian, bard, cleric, druid, fighter, monk, paladin, ranger, rogue, sorcerer, warlock, wizard.")
             classChoice = classChoice:ToLowerCase()
 
             if classChoice = "barbarian"
@@ -54,61 +55,73 @@ class Classes
                 barbarian:Main(stats, p)
                 barbarian:blah = stats
                 barbarian:statUse = stats
+                classes:Add(0, "barbarian")
             elseif classChoice = "bard"
                 classGood = true
                 bard:Main(stats, p)
                 bard:blah = stats
                 bard:statUse = stats
+                classes:Add(0, "bard")
             elseif classChoice = "cleric"
                 classGood = true
                 cleric:Main(stats, p)
                 cleric:blah = stats
                 cleric:statUse = stats
+                classes:Add(0, "cleric")
             elseif classChoice = "druid"
                 classGood = true
                 druid:Main(stats, p)
                 druid:blah = stats
                 druid:statUse = stats 
+                classes:Add(0, "druid")
             elseif classChoice = "fighter"
                 classGood = true
                 fighter:Main(stats, p)
                 fighter:blah = stats
                 fighter:statUse = stats 
+                classes:Add(0, "fighter")
             elseif classChoice = "monk"
                 classGood = true
                 monk:Main(stats, p)
                 monk:blah = stats
                 monk:statUse = stats
+                classes:Add(0, "monk")
             elseif classChoice = "paladin"
                 classGood = true
                 paladin:Main(stats, p)
                 paladin:blah = stats
                 paladin:statUse = stats  
+                classes:Add(0, "paladin")
             elseif classChoice = "ranger"
                 classGood = true
                 ranger:Main(stats, p)
                 ranger:blah = stats
                 ranger:statUse = stats 
+                classes:Add(0, "ranger")
             elseif classChoice = "rogue"
                 classGood = true
                 rogue:Main(stats, p)
                 rogue:blah = stats
                 rogue:statUse = stats
+                classes:Add(0, "rogue")
             elseif classChoice = "sorcerer"
                 classGood = true
                 sorcerer:Main(stats, p)
                 sorcerer:blah = stats
                 sorcerer:statUse = stats
+                classes:Add(0, "sorcerer")
             elseif classChoice = "warlock"
                 classGood = true
                 warlock:Main(stats, p)
                 warlock:blah = stats
                 warlock:statUse = stats
+                classes:Add(0, "warlock")
             elseif classChoice = "wizard"
                 classGood = true
                 wizard:Main(stats, p)
                 wizard:blah = stats
                 wizard:statUse = stats
+                classes:Add(0, "wizard")
             else
                 classGood = false
                 output "Please make another choice."

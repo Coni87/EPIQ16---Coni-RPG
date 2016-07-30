@@ -33,10 +33,6 @@ character:newStats = stats
 character:newMods = stats
 character:Main()
 
-Armor protection
-protection:dexStat = stats
-protection:newStats = stats
-protection:Main()
 
 
 Barbarian barbarian
@@ -77,3 +73,9 @@ wizard:raceMod = character
 
 Classes classChoice
 classChoice:Main(stats, character)
+output " " 
+
+Armor protection
+protection:dexStat = stats
+protection:newStats = stats
+protection:Main(classChoice)
