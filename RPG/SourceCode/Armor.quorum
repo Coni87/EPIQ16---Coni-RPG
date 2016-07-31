@@ -326,6 +326,41 @@ class Armor
             output "As a sorcerer, you cannot wear armor. Your AC is 10 + your Dex bonus."
                 armor = "none"
                 armorClass = 10 + dexMod
+        elseif classPick = "warlock"
+            text armorStyle = input("Please choose your armor style. light, medium, or heavy")
+            armorStyle = armorStyle:ToUpperCase()
+            if armorStyle = "LIGHT"
+                armor = input("You are proficient with light armor. Please choose your armor from the list: Padded, Leather, or Studded Leather")
+                armorClass = armorClass + profMod
+                output " " 
+                output "Your character will wear " + armor + " armor."  
+            elseif armorStyle = "MEDIUM"
+                armor = input("Please choose your armor from the list: Hide, Chain shirt, Scale mail, Breastplate, or Half plate")
+                output " " 
+                output "Your character will wear " + armor + " armor." 
+            elseif armorStyle = "HEAVY"
+                armor = input("Please choose your armor from the list: Ring mail, Chain mail, Splint, or Plate")
+                output " " 
+                output "Your character will wear " + armor + " armor."
+            end
+            text shield = input ("Do you want a shield?")
+            shield = shield:ToLowerCase()
+
+            if shield = "yes" or shield = "y"
+                armorClass = armorClass + 2
+                output " "
+                output " "
+                output "Your character will wear " + armor + " armor with a shield."
+            else
+                armorClass = armorClass
+                output " "
+                output " "
+                output "Your character will wear " + armor + " armor. You do not have a shield."
+            end
+        elseif classPick = "wizard"
+            output "As a wizard, you cannot wear armor. Your AC is 10 + your Dex bonus. "
+            armor = "none"
+            armorClass = 10 + dexMod
         end
 
             armor = armor:ToLowerCase()
