@@ -15,6 +15,7 @@ use Sorcerer
 use Warlock
 use Wizard
 use Classes
+use Levels
 
 Random d4
 Random d6
@@ -75,7 +76,11 @@ Classes classChoice
 classChoice:Main(stats, character)
 output " " 
 
+Levels level
+level:Main()
+
 Armor protection
 protection:dexStat = stats
 protection:newStats = stats
-protection:Main(classChoice)
+protection:Main(classChoice, level)
+

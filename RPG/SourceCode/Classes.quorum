@@ -20,8 +20,7 @@ use Player
 //Classes: Barbarian, Bard, Cleric, Druid, Fighter, Monk, Paladin, Ranger, Rogue, Sorcerer, Warlock, Wizard
 class Classes 
         public integer xp = 0
-        integer levelNumber = 0
-    
+        
         Random d12
 
         Barbarian barbarian
@@ -126,17 +125,6 @@ class Classes
                 classGood = false
                 output "Please make another choice."
             end
-        end
-    end
-    
-    action Level
-        integer levelNumber = 0
-        if xp < 300
-            levelNumber = 1
-        elseif xp > 300 and xp < 900
-            levelNumber = 2
-        elseif xp > 900 and xp < 2700
-            levelNumber = 3
         end
     end
 end
