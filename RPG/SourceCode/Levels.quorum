@@ -2,24 +2,37 @@ use Libraries.Containers.Array
 class Levels 
     public Array <integer> prof
     public integer levelNumber = 0
-    public integer xp = 0
+    public integer xp = 900
 
     action Main        
-        if xp < 300
+        if xp <= 300
             levelNumber = 1
-        elseif xp > 300 and xp < 900
+        elseif xp > 300 and xp < 899
             levelNumber = 2
-        elseif xp > 900 and xp < 2700
+        elseif xp > 900 and xp < 2699
             levelNumber = 3
+        elseif xp > 2700 and xp < 6499
+            levelNumber = 4
+        elseif xp > 6500 and xp < 13999
+            levelNumber = 5
+        elseif xp > 14000 and xp < 22999
+            levelNumber = 5
+        elseif xp > 23000  and xp < 33999
+            levelNumber = 6
         end
         
-        if levelNumber = 1
+        levelNumber = 1
             prof:Add(0,2)
-        elseif levelNumber = 2
+        levelNumber = 2
             prof:Add(1,2)
-        elseif levelNumber = 3
+        levelNumber = 3
             prof:Add(2,2)
-        end
+        levelNumber = 4
+            prof:Add(3,2)
+        levelNumber = 5
+            prof:Add(4,3)
+        levelNumber = 6
+            prof:Add(5,3)
         
     end
 end

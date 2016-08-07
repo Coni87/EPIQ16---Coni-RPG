@@ -15,6 +15,7 @@ class Barbarian
     public Player player = undefined
 
     Random d12
+
     integer con = 0 
 
     action Main (Stats stats, Player play)
@@ -25,6 +26,11 @@ class Barbarian
         player = play
 
         HitPoints()
+
+        //should start at higher damage
+        //maybe start at d12
+        output "As a Barbarian, you start with a Great Ax."
+        output d12:RandomIntegerBetween(1,12) + " damage inflicted."
     end
 
     action HitPoints
