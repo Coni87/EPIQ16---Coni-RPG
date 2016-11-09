@@ -55,12 +55,20 @@ class Armor
                     armorClass = armorClass + 2 + profMod
                     output " "
                     output " "
-                    output "You are proficient with a shield. Your character will wear " + armor + " armor with a shield."
+                    if armorStyle = "NONE"
+                        output "You are proficient with a shield. Your character will wear no armor with a shield."
+                    else
+                        output "You are proficient with a shield. Your character will wear " + armor + " armor with a shield."
+                    end
                 else
                     armorClass = armorClass
                     output " "
                     output " "
-                    output "Your character will wear " + armor + " armor. You do not have a shield."
+                    if armorStyle = "NONE"
+                        output "Your character will wear no armor. You do not have a shield."
+                    else
+                        output "Your character will wear " + armorStyle + ". You do not have a shield."
+                    end
                 end
         elseif classPick = "bard"
             text armorStyle = input("Please choose your armor style. light, medium, or heavy")

@@ -26,11 +26,15 @@ class Barbarian
         player = play
 
         HitPoints()
+        Weapon()
 
         //should start at higher damage
         //maybe start at d12
-        output "As a Barbarian, you start with a Great Ax."
-        output d12:RandomIntegerBetween(1,12) + " damage inflicted."
+    end
+    
+    action Weapon
+        output "As a Barbarian, you start with a Great Ax. It inflicts 1d12 damage at first level."
+//        output d12:RandomIntegerBetween(1,12) + " damage inflicted."
     end
 
     action HitPoints
